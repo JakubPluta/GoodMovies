@@ -1,18 +1,90 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="new movie movies ratings trailers">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jakub Pluta">
+    <title>{% block title %}
+        GoodMovies
+        {% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pingendo.min.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}"/>
+    <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 <body>
-{% for key, value in movie.items %}
-    <tr>
-        <td>{{key}} : {{value}}</td><br>
-    </tr>
-{% endfor %}
+            <div class="container">
+            <!-- Search header -->
+                <form class="navbar-form navbar-left text-center" role="search"
+                      method="POST">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" placeholder="Movie name" name="movie_name">
+                    </div>
+                    <button type="submit" class="btn btn-success" value="search">Search</button>
+                </form>
+        </div>
+
+            <!-- Movies -->
+
+<!--            <div class="container">-->
+            {% for movie in movies_data %}
+
+<!--            {% if forloop.first or forloop.counter0|divisibleby:4 %}-->
+<!--                <div class="row" >-->
+<!--            {% endif %}-->
+
+                <div class="container">
+                    <div class="card-deck">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="card-title">
+                <h3><strong>{{ movie.title }}</strong></h3>
+                                    </div>
+                <a href="#" class="#"><img class="img-fluid photo rounded figure-img" alt="" src="{{ movie.poster_path }}"></a>
+
+                    <p class="font-weight-normal">
+                    {{ movie.overview }}</p>
+                </div>
+                </div>
+                </div>
+                   </div>
+                </div>
+          <br>
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+
+            {% endif %}
+        {% endfor %}
 
 
 
 
+    <div id="wrap">
+        {% block body %}
+            <!-- Code -->
+        {% endblock %}
+    </div>
+
+
+
+
+
+    <!-- Footer -->
+
+
+
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

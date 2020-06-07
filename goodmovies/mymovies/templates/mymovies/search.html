@@ -1,0 +1,82 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Muli&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>Movie Finder!</title>
+  </head>
+  <body>
+
+<!--    <div class="wrapper">-->
+<!--        <div class="sidebar">-->
+<!--            <h3>Navigation</h3>-->
+<!--            <ul>-->
+<!--                <li><a href="#"><i class="fas fa-home"></i>Home</a></li>-->
+<!--                <li><a href="#"><i class="fas fa-user"></i>Login</a></li>-->
+<!--                <li><a href="#"><i class="fas fa-user"></i>Register</a></li>-->
+<!--                <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>-->
+<!--            </ul>-->
+<!--            <div class="social_media">-->
+<!--              <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+<!--              <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--              <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+            <div class="columns">
+                <div class="column is-offset-2 is-4">
+                    <form method="POST">
+                        <div class="input-group mb-3">
+                            <div>
+                            {% csrf_token %}
+                                <input class="input" type="text" name="movie_name"
+                                       placeholder="Movie name">
+                                <button type="submit" name="submit" value="search" class="btn btn-primary small my-2">Search</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+
+
+        {% for movie in movies_data %}
+
+            {% if forloop.first or forloop.counter0|divisibleby:4 %}
+                <div class="row" >
+            {% endif %}
+
+                <span>
+                <h4><strong>{{ movie.title }}</strong></h4>
+                  <a href="#" class="photo">
+                    <img alt="" src="{{ movie.poster_path }}">
+                  </a>
+                <p class="#">{{ movie.overview }}</p>
+                <small class="text-muted">{{ movie.runtime }} mins</small>
+                </span>
+                </div>
+
+
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+            </div>
+            {% endif %}
+        {% endfor %}
+
+
+
+
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

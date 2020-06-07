@@ -1,0 +1,33 @@
+body {
+    background-color: #f3f5f9;
+}
+
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 90%;
+}
+
+.footer {
+    position: relative;
+    clear:both;
+    padding-top: 1%;
+    padding-bottom: 0;
+}
+
+
+.photo img{
+
+  object-fit: cover;
+  filter: grayscale(44%) contrast(120%);
+  box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+  display: block;
+
+}
+
+p{
+    font-size: 16px;
+}
+
