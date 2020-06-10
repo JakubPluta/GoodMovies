@@ -9,58 +9,52 @@
     <title>{% block title %}
         GoodMovies
         {% endblock %}</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/pingendo.min.css' %}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 <body>
+            <div class="title_container">
+                <h1> Good_____Movies</h1>
+            <hr class="line">
+            </div>
+
             <div class="container">
-            <!-- Search header -->
-                <form class="navbar-form navbar-left text-center" role="search"
-                      method="POST">
-                    <div class="form-group">
-                        {% csrf_token %}
-                        <input type="text" class="form-control" placeholder="Movie name" name="movie_name">
-                    </div>
-                    <button type="submit" class="btn btn-success" value="search">Search</button>
-                </form>
-        </div>
+            <!-- The form -->
+            <form class="example" role="search"
+                                  method="POST">
+                {% csrf_token %}
+              <input type="text" placeholder="Search for movie.." name="movie_name">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+
 
             <!-- Movies -->
 
-<!--            <div class="container">-->
-            {% for movie in movies_data %}
 
-<!--            {% if forloop.first or forloop.counter0|divisibleby:4 %}-->
-<!--                <div class="row" >-->
-<!--            {% endif %}-->
-
-                <div class="container">
-                    <div class="card-deck">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-block">
-                                <div class="card-title">
-                <h3><strong>{{ movie.title }}</strong></h3>
-                                    </div>
-                <a href="#" class="#"><img class="img-fluid photo rounded figure-img" alt="" src="{{ movie.poster_path }}"></a>
-
-                    <p class="font-weight-normal">
+            <div class="row col-md-12">
+                {% for movie in movies_data %}
+                    <div class="col-md-3">
+                        <h3><strong>{{ movie.title }}</strong></h3>
+                        <div class="image-container">
+                        <a href="#" class="photo">
+                            <img class="img-fluid photo rounded figure-img" src="{{ movie.poster_path }}"
+                                 onerror="this.src='static/img/image-not-available.jpg'"></a>
+                            </div>
+                    <span class="overflow-dots">
+                        <p class="font-weight-normal">
                     {{ movie.overview }}</p>
-                </div>
-                </div>
-                </div>
-                   </div>
-                </div>
-          <br>
-            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                        </span>
+                    </div>
+                {% endfor %}
+            </div>
 
-            {% endif %}
-        {% endfor %}
 
 
 
