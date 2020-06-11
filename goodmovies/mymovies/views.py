@@ -1,13 +1,16 @@
 import requests
 import os
 from django.shortcuts import render
+from .models import MovieData
 
 TMDb_KEY = os.environ.get('TMDb')
 
 
+
+
 def index(request):
     movies_data = []
-    MAX_RECORDS = 10
+    MAX_RECORDS = 12
 
     if request.method == "POST":
         url = f'https://api.themoviedb.org/3/search/movie?'
@@ -48,11 +51,19 @@ def index(request):
                 'release_date': single_movie_result.get('release_date', None),
             }
 
+            a_movie = {
+            'title': movie_data.get('title'),
+            'overview': movie_data.get('overview'),
+            'release_date': movie_data.get('release_date'),
+            'image_url': movie_data.get('backdrop_path'),
+            }
+
+            one_movie = MovieData.objects.create(**a_movie)
             movies_data.append(movie_data)
 
     context = {
             'movies_data' : movies_data
         }
 
-    #return render(request, 'mymovies/search.html', context)
+
     return render(request, 'mymovies/home.html', context)

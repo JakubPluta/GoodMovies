@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="new movie movies ratings trailers">
@@ -9,18 +9,19 @@
     <title>{% block title %}
         GoodMovies
         {% endblock %}</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/pingendo.min.css' %}"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-    <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/pingendo.min.css' %}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    </head>
 <body>
             <div class="title_container">
-                <h1> Good_____Movies</h1>
+                <a href="{{ urls.index }}" class="#" style="text-decoration:none">
+                 <h1>Good_____Movies </h1>
+                </a>
             <hr class="line">
             </div>
 
