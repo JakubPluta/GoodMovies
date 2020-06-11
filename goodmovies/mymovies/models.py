@@ -12,6 +12,7 @@ class User(models.Model):
 
 
 class MovieData(models.Model):
+    movie_id = models.IntegerField()
     title = models.CharField(max_length=100)
     overview = models.TextField(max_length=5000)
     release_date = models.CharField(max_length=50)
@@ -29,11 +30,10 @@ class MovieData(models.Model):
         return movie
 
 
-# class WatchList(models.Model):
-#     title = models.CharField(max_length=100)
-#     overview = models.TextField(max_length=5000)
-#     release_date = models.CharField(max_length=50)
-#     image_file = models.ImageField(upload_to='images')
-#     image_url = models.URLField()
-#     user = models.ForeignKey(User, related_name='add_to_watch',
-#                              on_delete=models.CASCADE)
+class WatchList(models.Model):
+    """One Watch List can contain many movies
+
+    """
+    movies =models.ManyToManyField(MovieData)
+    user = models.ForeignKey(User, related_name='add_to_watch',
+                             on_delete=models.CASCADE)

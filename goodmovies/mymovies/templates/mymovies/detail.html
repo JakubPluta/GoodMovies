@@ -25,24 +25,15 @@
             <hr class="line">
             </div>
 
-            <div class="container">
-            <!-- The form -->
-            <form class="example" role="search"
-                                  method="POST">
-                {% csrf_token %}
-              <input type="text" placeholder="Search for movie.." name="movie_name">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            </div>
-
 
             <!-- Movies -->
 
 
             <div class="row col-md-12">
-                {% for movie in movies_data %}
+                {{ movie }}
+            </div>
                     <div class="col-md-3">
-                        <h3><a class="article-title" href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h3>
+                        <h3>{{ movie.title }}</h3>
                         <div class="image-container">
                         <a href="#" class="photo">
                             <img class="img-fluid photo rounded figure-img" src="{{ movie.poster_path }}"
@@ -53,8 +44,13 @@
                     {{ movie.overview }}</p>
                         </span>
                     </div>
-                {% endfor %}
-            </div>
+
+
+
+
+
+
+
 
 
 
