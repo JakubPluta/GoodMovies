@@ -42,7 +42,7 @@
             <div class="row col-md-12">
                 {% for movie in movies_data %}
                     <div class="col-md-3">
-                        <h3><a class="article-title" href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h3>
+                        <h3 style="text-decoration:none"><a class="article-title" style="text-decoration:none" href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h3>
                         <div class="image-container">
                         <a href="#" class="photo">
                             <img class="img-fluid photo rounded figure-img" src="{{ movie.poster_path }}"
