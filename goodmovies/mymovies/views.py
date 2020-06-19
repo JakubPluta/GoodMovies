@@ -3,7 +3,14 @@ import os
 from django.shortcuts import render
 from .models import MovieData
 
+
 TMDb_KEY = os.environ.get('TMDb')
+
+
+
+def test(request):
+    return render(request,'mymovies/main.html')
+
 
 
 

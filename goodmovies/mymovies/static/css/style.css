@@ -1,5 +1,5 @@
 body {
-    background-color: #f3f5f9;
+    background-color: #cae2eb;
 }
 
 html, body {
@@ -27,6 +27,20 @@ html, body {
 
 }
 
+
+.newcontainer {
+  display: flex;
+  justify-content: center;
+}
+.newcenter {
+  width: 800px;
+}
+
+
+.bx{
+height: 250px;
+overflow: auto;
+}
 
 
 .title_container{
@@ -89,7 +103,21 @@ line-height: 64px; margin: 0 0 0; padding: 10px 10px;
  text-align: center; text-transform: uppercase;
  }
 
-p { color: #111; font-family: 'Open Sans',
+p{
+color: #111; font-family: 'Open Sans',
+sans-serif; font-size: 14px;
+text-align: justify;
+margin: 0 0 10px;
+}
+
+h6{
+white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.p2 { color: #111; font-family: 'Open Sans',
 sans-serif; font-size: 16px;
 line-height: 28px;
 margin: 0 0 48px;
