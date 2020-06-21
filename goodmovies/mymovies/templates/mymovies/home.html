@@ -44,7 +44,8 @@
                 <p>{{ movie.overview }}</p>
                     </div>
                     <br>
-                    <button data-product={{movie.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Watch List</button>
+                    <button data-movie={{movie.id}} data-action="add" data-user={{user.id}}
+                            class="btn btn-outline-secondary add-btn update-cart">Add to Watch List {{ movie.id }}</button>
                     <hr>
             </div>
             </div>
@@ -52,6 +53,6 @@
                 {% endfor %}
             </div>
 
-
+<script type="text/javascript" src="{% static 'js/movie.js' %}"></script>
 {% endblock content %}
 

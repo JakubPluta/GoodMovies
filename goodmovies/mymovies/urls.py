@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('movie/<int:id>/', views.movie_details, name='movie-detail'),
-    path('main', views.test, name='main'),
+    path('add_movie/', views.add_to_watchlist,name='watchlist'),
 ]

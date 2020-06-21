@@ -1,15 +1,28 @@
 import requests
 import os
 from django.shortcuts import render
-from .models import MovieData
+from django.http import JsonResponse
+from .models import MovieData, WatchList, MovieViewer
+import json
 
 
 TMDb_KEY = os.environ.get('TMDb')
 
 
 
-def test(request):
-    return render(request,'mymovies/main.html')
+def add_to_watchlist(request):
+    data = json.loads(request.body)
+    movie_id = data['movie_id']
+    user_id = data['user_id']
+    action = data['action']
+    user = MovieViewer.objects.get(user=user_id)
+
+    watchlist_item = WatchList.objects.create(user=user,
+                                                     movie=movie_id)
+    watchlist_item.save()
+
+
+    return JsonResponse('Item was added', safe=False)
 
 
 
